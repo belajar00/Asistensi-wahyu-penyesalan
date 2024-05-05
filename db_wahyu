@@ -1,0 +1,47 @@
+MariaDB [(none)]> create database yu0081;
+Query OK, 1 row affected (0.011 sec)
+
+MariaDB [(none)]> use yu0081;
+
+MariaDB [yu0081]> create table formpendaftaran (nama char(50) primary key,
+    -> nim int(50), jenisklm enum ("P","L"));
+Query OK, 0 rows affected (0.226 sec)
+
+MariaDB [yu0081]> create table wahyu0081(nim char(50) primary key,
+    -> alamat varchar(50), usia int(50));
+Query OK, 0 rows affected (0.118 sec)
+
+MariaDB [yu0081]> create table yu13020220081
+    -> (nama char(50), nim char(50),
+    -> foreign key (nama) references formpendaftaran (nama),
+    -> foreign key (nim) references wahyu0081(nim));
+Query OK, 0 rows affected (0.269 sec)
+
+MariaDB [yu0081]> desc formpendaftaran;
++----------+---------------+------+-----+---------+-------+
+| Field    | Type          | Null | Key | Default | Extra |
++----------+---------------+------+-----+---------+-------+
+| nama     | char(50)      | NO   | PRI | NULL    |       |
+| nim      | int(50)       | YES  |     | NULL    |       |
+| jenisklm | enum('P','L') | YES  |     | NULL    |       |
++----------+---------------+------+-----+---------+-------+
+3 rows in set (0.040 sec)
+
+MariaDB [yu0081]> desc wahyu0081;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| nim    | char(50)    | NO   | PRI | NULL    |       |
+| alamat | varchar(50) | YES  |     | NULL    |       |
+| usia   | int(50)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.029 sec)
+
+MariaDB [yu0081]> desc yu13020220081;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| nama  | char(50) | YES  | MUL | NULL    |       |
+| nim   | char(50) | YES  | MUL | NULL    |       |
++-------+----------+------+-----+---------+-------+
+2 rows in set (0.019 sec)
